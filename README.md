@@ -8,7 +8,7 @@ Pasos para ejecutar localmente en linux:
 3. Habilitar el [Docker Registry](https://minikube.sigs.k8s.io/docs/handbook/registry/) local 
 4. Instalar herramientas([arkade y faas-cli](https://docs.openfaas.com/cli/install/)) para operar sobre las funciones
 5. Instalar [OpenFaas](https://docs.openfaas.com/deployment/kubernetes/#1-deploy-the-chart-with-arkade-fastest-option) usando arkade. _**Es importante prestar atencion a la salida por consola de este comando y seguir las instrucciones.**_
-
+6. En la carpeta donde descargamos el proyecto agregamos el template de golang con el sigiente comando: `faas-cli template store pull golang-middleware`
 
 Una vez todo instalado y configurado, podemos hacer los siguiente:
 
