@@ -1,0 +1,13 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  poc-open-faas-star-wars:
+    lang: golang-middleware
+    handler: ./poc-open-faas-star-wars
+    #image: pocredbeeregistry.azurecr.io/poc-open-faas-star-wars:0.0.1
+    image: localhost:5000/poc-open-faas-star-wars:0.0.1
+    environment:
+      character_search_url: http://swapi.dev/api/people/
+      character_search_timeout: 20000
