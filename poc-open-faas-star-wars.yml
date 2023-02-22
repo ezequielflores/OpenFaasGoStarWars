@@ -6,7 +6,6 @@ functions:
   poc-open-faas-star-wars:
     lang: golang-middleware
     handler: ./poc-open-faas-star-wars
-    #image: pocredbeeregistry.azurecr.io/poc-open-faas-star-wars:0.0.1
     image: localhost:5000/poc-open-faas-star-wars:0.0.1
     environment:
       character_search_url: http://swapi.dev/api/people/
