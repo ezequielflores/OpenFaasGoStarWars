@@ -20,21 +20,21 @@ func NewGetByName(starwarRepository out.StarwarRepository) *SearchByFilter {
 	}
 }
 
-func (c *SearchByFilter) GetFilmsInfo(urlFilms []string, context context.Context) []model.Film {
+func (c *SearchByFilter) GetFilmsInfo(urlFilms []string, ctx context.Context) []model.Film {
 
 	channel := make(chan *model.SearchFilmResult, len(urlFilms))
 	defer close(channel)
 	filmsByCharacter := make([]model.Film, len(urlFilms))
 	for localId, movie := range urlFilms {
-		go func(localId int, movie string) {
-			response, err := c.starwarRepository.GetFilms(localId, movie, context)
+		go func(localId int, movie string, localContext context.Context) {
+			response, err := c.starwarRepository.GetFilms(localId, movie, localContext)
 			if err != nil {
 				log.Printf("Error getting films method %s\n", err.Error())
 				channel <- &model.SearchFilmResult{Film: &model.Film{}}
 				return
 			}
 			channel <- response
-		}(localId, movie)
+		}(localId, movie, ctx)
 	}
 
 	for range urlFilms {
