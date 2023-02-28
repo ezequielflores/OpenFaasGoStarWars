@@ -20,13 +20,13 @@ func init() {
 	}
 	searchByFilter := starwar.NewGetByName(restAdapter)
 	starwarsController := controller.NewStarWarController(searchByFilter)
-	routes["/starwar"] = starwarsController.SearchStarWarCharacter
+	routes["/starwars"] = starwarsController.SearchStarWarCharacter
 
 }
 
 func Handle(w http.ResponseWriter, r *http.Request) {
-	if strings.HasPrefix(r.URL.Path, "/api/v1/starwar") {
-		routes["/starwar"](w, r)
+	if strings.HasPrefix(r.URL.Path, "/api/v1/starwars") {
+		routes["/starwars"](w, r)
 		return
 	}
 

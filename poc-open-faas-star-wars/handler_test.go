@@ -17,14 +17,14 @@ func mockController(w http.ResponseWriter, r *http.Request) {
 }
 
 func init() {
-	routes["/starwar"] = mockController
+	routes["/starwars"] = mockController
 }
 
 func TestHandlerResponseHttpStatusOk(t *testing.T) {
 
 	req := httptest.NewRequest(
 		http.MethodGet,
-		"/api/v1/starwar?q=data&page=1",
+		"/api/v1/starwars?q=data&page=1",
 		nil,
 	)
 	rec := httptest.NewRecorder()
